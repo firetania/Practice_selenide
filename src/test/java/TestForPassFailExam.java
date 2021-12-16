@@ -5,13 +5,6 @@ import org.testng.annotations.Test;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
-import java.time.Duration;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static com.codeborne.selenide.Selenide.*;
-
 public class TestForPassFailExam {
     @Test
     public void testSignIn(){
