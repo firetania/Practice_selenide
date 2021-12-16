@@ -48,7 +48,6 @@ public class TestForPassFailExam {
 
         for (SelenideElement elem: filteredElements){
             String currentElement = elem.shouldBe(Condition.visible).getText();
-            System.out.println(currentElement);
             String currentPrice = currentElement.substring(0, 2);
             if (Integer.parseInt(currentPrice) > 91 && Integer.parseInt(currentPrice) < 99){
                 count++;
