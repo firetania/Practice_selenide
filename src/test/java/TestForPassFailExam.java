@@ -16,7 +16,7 @@ public class TestForPassFailExam {
         nameField.setValue("Петров Пётр Петрович");//.pressEnter();
         SelenideElement emailField = $x(".//*[@id=\"input_email\"]");
         emailField.setValue("petrovpp@mail.ru");//.pressEnter();
-        SelenideElement signInButton = $x(".//html/body/section/div/div/form/div[5]/div[2]/input");
+        SelenideElement signInButton = $x(".//*[@value=\"Зарегистрироваться\"]");
         signInButton.click();
         Assert.assertTrue(signInButton.exists());
     }
@@ -29,7 +29,7 @@ public class TestForPassFailExam {
         nameField.setValue("Петров Пётр Петрович");//.pressEnter();
         SelenideElement emailField = $x(".//*[@id=\"input_email\"]");
         emailField.setValue("petrovpp@mail.ru").pressEnter();
-        SelenideElement error = $x(".//html/body/section/div/div/form/p");
+        SelenideElement error = $x(".//*[@class=\"error\"]");
         String requiredError = "Укажите номер контактного телефона с кодом города";
         Assert.assertEquals(error.shouldBe(Condition.visible).getText(), requiredError);
     }
@@ -38,13 +38,13 @@ public class TestForPassFailExam {
     public void testFilter(){
         String currentPage = "https://sunduchok64.ru/store/kvilling/";
         open(currentPage);
-        SelenideElement priceMinField = $x(".//*[@id=\"filter\"]/ul/li/div[2]/div[1]/input[1]");
+        SelenideElement priceMinField = $x(".//*[@name=\"price[min]\"]");
         priceMinField.setValue("91").pressEnter();
-        SelenideElement priceMaxField = $x(".//*[@id=\"filter\"]/ul/li/div[2]/div[1]/input[2]");
+        SelenideElement priceMaxField = $x(".//*[@name=\"price[max]\"]");
         priceMaxField.setValue("99").pressEnter();
 
         int count = 0;
-        ElementsCollection filteredElements = $$x("./html/body/section/div[1]/div[2]/article/div");
+        ElementsCollection filteredElements = $$x(".//*[@class=\"store-items-container\"]");
 
         for (SelenideElement elem: filteredElements){
             String currentElement = elem.shouldBe(Condition.visible).getText();
